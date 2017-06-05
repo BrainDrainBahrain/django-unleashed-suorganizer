@@ -7,7 +7,10 @@ from django.db import models
 class Tag(models.Model):
     name = models.CharField(max_length=31, unique=True)
     slug = models.SlugField(max_length=31, unique=True, help_text='A label for URL config.')
-
+    
+    class Meta:
+        ordering = ['name']
+        get_latest_by = 'founded_date'
 
 class Startup(models.Model):
     namem = models.CharField(max_length=31, db_index=True)
